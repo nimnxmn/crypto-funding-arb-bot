@@ -1,0 +1,100 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  /* Trading colors */
+  --color-green: var(--green);
+  --color-red: var(--red);
+  --color-yellow: var(--yellow);
+  --color-blue: var(--blue);
+  --color-surface-2: var(--surface-2);
+}
+
+/* Binance-style dark theme — always dark */
+:root {
+  --background: #0B0E11;
+  --foreground: #EAECEF;
+  --card: #181A20;
+  --card-foreground: #EAECEF;
+  --popover: #1E2329;
+  --popover-foreground: #EAECEF;
+  --primary: #F0B90B;
+  --primary-foreground: #0B0E11;
+  --secondary: #1E2329;
+  --secondary-foreground: #EAECEF;
+  --muted: #1E2329;
+  --muted-foreground: #848E9C;
+  --accent: #2B3139;
+  --accent-foreground: #EAECEF;
+  --destructive: #F6465D;
+  --border: #2B3139;
+  --input: #2B3139;
+  --ring: #F0B90B;
+  --radius: 0.375rem;
+  --surface-2: #1E2329;
+  --green: #0ECB81;
+  --red: #F6465D;
+  --yellow: #F0B90B;
+  --blue: #3B82F6;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 13px;
+  }
+  .font-mono, .tabular-nums {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Trading-specific utilities */
+.text-green { color: #0ECB81; }
+.text-red { color: #F6465D; }
+.text-yellow { color: #F0B90B; }
+.text-muted { color: #848E9C; }
+.bg-surface { background: #181A20; }
+.bg-surface-2 { background: #1E2329; }
+.border-subtle { border-color: #2B3139; }
+
+.row-hover:hover {
+  background: #1E2329;
+  cursor: pointer;
+}
+
+/* Dense table rows */
+.trade-table td, .trade-table th {
+  padding: 8px 12px;
+  height: 36px;
+}

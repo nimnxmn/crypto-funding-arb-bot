@@ -1,0 +1,32 @@
+# Secrets — never commit
+.env
+live/positions.json
+
+# Personal trade data
+data/trades_log.csv
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# Next.js (web/ has its own .gitignore but belt-and-suspenders)
+web/.next/
+web/node_modules/
+
+# Logs
+*.log
+api_out.log
+api_err.log
+web_out.log
+web_err.log
+
+# Claude Code local settings
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
