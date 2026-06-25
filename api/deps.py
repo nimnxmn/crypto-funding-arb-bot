@@ -37,13 +37,3 @@ def reset_simulator() -> None:
     get_simulator.cache_clear()
 
 
-# ── Live trader (lazy) ────────────────────────────────────────────────────────
-_live_trader = None
-
-
-def get_live_trader():
-    global _live_trader
-    if _live_trader is None:
-        from live.trader import LiveTrader
-        _live_trader = LiveTrader()
-    return _live_trader

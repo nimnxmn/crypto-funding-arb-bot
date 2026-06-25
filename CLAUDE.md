@@ -65,7 +65,9 @@ ARB_bot/
 │       ├── positions.py         # CRUD /api/positions, POST /close-all
 │       ├── funding.py           # POST /api/funding/apply
 │       ├── risk.py              # GET /api/risk
+│       ├── balances.py          # GET /api/balances (live mode: USDT balance per exchange)
 │       ├── pnl.py               # GET /api/pnl/history
+│       ├── mode.py              # GET/POST /api/mode (switch paper ↔ live at runtime)
 │       ├── config_route.py      # POST /api/config (runtime config mutation)
 │       └── reset.py             # POST /api/reset (wipe CSV + clear simulator cache)
 └── web/                         # Next.js 14 frontend
@@ -103,8 +105,8 @@ ARB_bot/
 - Event-sourced CSV log: open / funding / close events; positions reconstructed on startup
 - `close_reason` field: `"manual"` or `"stop_loss"` — stored in CSV and shown in UI
 
-### ✅ Phase 3 — Streamlit dashboard (legacy, superseded)
-- Replaced by FastAPI + Next.js dashboard (Phase 6)
+### ~~Phase 3 — Streamlit dashboard~~ (deleted)
+- Was replaced by FastAPI + Next.js dashboard (Phase 6); `dashboard/` directory removed
 
 ### ✅ Phase 4 — Risk management
 - **Drift detection**: `drift_pct = |short_price − long_price| / mid` — warning at 0.3%, critical at 1.0%
@@ -114,10 +116,11 @@ ARB_bot/
 - All thresholds use `import config` (not `from config import`) so runtime mutation via `/api/config` takes effect immediately
 
 ### ✅ Phase 5 — Live trading skeleton
-- Authenticated wrappers for all 3 exchanges (HMAC signing)
+- Authenticated wrappers for all 3 exchanges (HMAC signing) — module-level functions, not classes
 - `live.trader.open_live_pair`: parallel leg execution, auto emergency-close on partial fill failure
 - Lot-size matching: equal notional on both legs, no residual directional exposure
 - `live.trader.sync_funding`: pulls actual payments from exchange income endpoints
+- `live.trader.get_balances`: returns USDT balance dict from all 3 exchanges (used by `/api/balances`)
 - Telegram notifier; `TRADING_MODE` env var (`paper` | `live`)
 
 ### ✅ Phase 6 — Pro dashboard (built)

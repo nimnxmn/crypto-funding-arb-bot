@@ -10,7 +10,7 @@ FIELDNAMES = [
     "event_id", "event_type", "pair_id", "timestamp",
     "base", "short_exchange", "long_exchange",
     "short_price", "long_price", "size_usd",
-    "short_rate", "long_rate", "amount_usd", "notes",
+    "short_rate", "long_rate", "amount_usd", "leverage", "close_reason", "notes",
 ]
 
 

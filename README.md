@@ -48,7 +48,7 @@ git clone https://github.com/nimnxmn/crypto-funding-arb-bot.git
 cd crypto-funding-arb-bot
 
 # Install Python dependencies
-pip install fastapi uvicorn requests python-dotenv
+pip install -r requirements.txt
 
 # Install frontend dependencies
 cd web && npm install && cd ..
