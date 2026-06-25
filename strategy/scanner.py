@@ -10,7 +10,7 @@ PERIODS_PER_YEAR = 3 * 365  # using rate_per_8h, so 3 settlements/day
 # Shared TTL cache for fetch_all() — used by both HTTP routes and WS broadcaster
 # so only one actual set of exchange API calls happens per cycle.
 _fetch_cache: dict = {"data": None, "ts": 0.0, "scanned_at": ""}
-_FETCH_TTL = 10  # seconds
+_FETCH_TTL = 5  # seconds — matches WebSocket broadcast interval
 
 
 def format_time_until(ts_ms: int) -> str:

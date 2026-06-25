@@ -96,7 +96,7 @@ ARB_bot/
 - Funding rates normalized to per-8h regardless of native interval
 - Liquidity filter: drops pairs below `MIN_24H_VOLUME_USD` ($1M default)
 - Stock-token blacklist (`EXCLUDED_BASES`) — synthetic tokens have divergent feeds
-- Shared 10s TTL cache (`_fetch_cached`) used by both HTTP routes and WS broadcaster — no double fetching
+- Shared 5s TTL cache (`_fetch_cached`) used by both HTTP routes and WS broadcaster — no double fetching; TTL matches the 5s WebSocket broadcast interval
 
 ### ✅ Phase 2 — Paper trade engine
 - `ArbPair`: delta-neutral position, size_usd = notional per leg, collateral = size_usd / leverage
